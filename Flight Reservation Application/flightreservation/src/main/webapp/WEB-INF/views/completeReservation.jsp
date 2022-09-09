@@ -34,7 +34,5 @@
 			<input type="submit" value="Confirm">
 		</pre>
 	</form>
-
-
 </body>
 </html>

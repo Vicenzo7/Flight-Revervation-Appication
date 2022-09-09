@@ -1,9 +1,6 @@
 package com.vicenzo.flightreservation.entities;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Generated;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 

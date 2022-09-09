@@ -4,7 +4,7 @@ import lombok.Data;
 @Data
 public class ReservationRequest {
 
-    private Long id;
+    private Long flightId;
 
     private String passengerFirstName;
     private String passengerLastName;
