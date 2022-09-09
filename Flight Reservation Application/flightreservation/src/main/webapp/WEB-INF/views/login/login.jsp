@@ -4,22 +4,20 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
+	<title>User Login</title>
 </head>
 <body>
+<h2>Login:</h2>
 
-<h2>Find Flights</h2>
-
-<form action="findFlights" method="post">
-
-	From:<input type="text" name="from" />
-	To:<input type="text" name="to" />
-	Departure Date:<input type="text" name="departureDate" />
-	<input type="submit" value="Search" />
-
-
+<form action="login" method="post">
+	<pre>
+	Username: <input type="text" name="email" />
+	Password: <input type="password" name="password" />
+	<input type="submit" value="login" />
+	</pre>
 </form>
 
+${msg}
 
 </body>
 </html>
