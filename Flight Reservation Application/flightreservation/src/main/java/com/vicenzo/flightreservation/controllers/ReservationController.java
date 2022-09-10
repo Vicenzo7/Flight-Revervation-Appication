@@ -8,7 +8,10 @@ import com.vicenzo.flightreservation.services.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ReservationController {
@@ -31,7 +34,7 @@ public class ReservationController {
 
 
     @RequestMapping(value = "/completeReservation", method = RequestMethod.POST)
-    public String completeReservation(@RequestBody  ReservationRequest request, ModelMap modelMap){
+    public String completeReservation(ReservationRequest request, ModelMap modelMap){
 
         System.out.println("in the method");
         Reservation reservation = reservationService.bookFlight(request);

@@ -7,6 +7,8 @@ import com.vicenzo.flightreservation.entities.Reservation;
 import com.vicenzo.flightreservation.repos.FlightRepository;
 import com.vicenzo.flightreservation.repos.PassengerRepository;
 import com.vicenzo.flightreservation.repos.ReservationRepository;
+import com.vicenzo.flightreservation.util.EmailUtil;
+import com.vicenzo.flightreservation.util.PDFGenerator;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,12 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Autowired
     private ReservationRepository reservationRepository;
+
+    @Autowired
+    private PDFGenerator pdfGenerator;
+
+    @Autowired
+    private EmailUtil emailUtil;
 
     @Override
     public Reservation bookFlight(ReservationRequest request) {
@@ -42,10 +50,6 @@ public class ReservationServiceImpl implements ReservationService {
 //        passenger.setPhone(request.getPassengerPhone());
 //        passenger.setEmail(request.getPassengerEmail());
 
-
-
-
-
         Passenger savedPassenger = passengerRepository.save(passenger);
 
         Reservation reservation = new Reservation();
@@ -53,6 +57,11 @@ public class ReservationServiceImpl implements ReservationService {
         reservation.setPassenger(savedPassenger);
         reservation.setCheckedIn(false);
         Reservation savedReservation = reservationRepository.save(reservation);
+
+        String filePath = "E:/Udemy/Project/ReservationPDF/reservation" + savedReservation.getId() + ".pdf";
+        pdfGenerator.generateItinerary(savedReservation, filePath);
+
+        emailUtil.sendItinerary(passenger.getEmail(),filePath);
 
         return savedReservation;
     }
