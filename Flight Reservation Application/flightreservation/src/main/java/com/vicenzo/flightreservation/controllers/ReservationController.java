@@ -5,6 +5,8 @@ import com.vicenzo.flightreservation.entities.Flight;
 import com.vicenzo.flightreservation.entities.Reservation;
 import com.vicenzo.flightreservation.repos.FlightRepository;
 import com.vicenzo.flightreservation.services.ReservationService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ReservationController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(ReservationController.class);
+
     @Autowired
     private FlightRepository flightRepository;
 
@@ -24,10 +28,10 @@ public class ReservationController {
 
     @RequestMapping("/showCompleteReservation")
     public String showCompleteReservation(@RequestParam("flightId")  Long flightId, ModelMap modelMap) {
-
+        LOGGER.info("Inside showCompleteReservation() invoked with the flight Id: "+flightId);
         Flight flight = flightRepository.findById(flightId).get();
         modelMap.addAttribute("flight",flight);
-
+        LOGGER.info("Flight is "+flight);
         return  "completeReservation";
     }
 
@@ -35,6 +39,7 @@ public class ReservationController {
 
     @RequestMapping(value = "/completeReservation", method = RequestMethod.POST)
     public String completeReservation(ReservationRequest request, ModelMap modelMap){
+        LOGGER.info("Inside completeReservation()"+request);
 
         System.out.println("in the method");
         Reservation reservation = reservationService.bookFlight(request);

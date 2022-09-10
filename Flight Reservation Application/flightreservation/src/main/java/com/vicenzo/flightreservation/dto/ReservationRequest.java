@@ -1,7 +1,10 @@
 package com.vicenzo.flightreservation.dto;
 
 import lombok.Data;
+import lombok.ToString;
+
 @Data
+@ToString
 public class ReservationRequest {
 
     private Long flightId;
