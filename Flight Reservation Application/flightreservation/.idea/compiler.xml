@@ -10,9 +10,13 @@
         <module name="flightreservation" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="flightcheckin" target="11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="flightcheckin" options="-parameters" />
       <module name="flightreservation" options="-parameters" />
     </option>
   </component>
