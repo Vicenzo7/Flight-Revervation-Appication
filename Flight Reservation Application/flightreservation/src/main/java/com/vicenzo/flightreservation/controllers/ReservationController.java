@@ -31,7 +31,7 @@ public class ReservationController {
 
 
     @RequestMapping(value = "/completeReservation", method = RequestMethod.POST)
-    public String completeReservation(ReservationRequest request, ModelMap modelMap){
+    public String completeReservation(@RequestBody  ReservationRequest request, ModelMap modelMap){
 
         System.out.println("in the method");
         Reservation reservation = reservationService.bookFlight(request);
