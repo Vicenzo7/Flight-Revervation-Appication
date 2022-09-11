@@ -15,12 +15,15 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ReservationServiceImpl.class);
+    @Value("${flightreservation.itinerary.dirpath}")
+    private  String ITINERARY_DIR ;
 
     @Autowired
     private FlightRepository flightRepository;
@@ -73,7 +76,7 @@ public class ReservationServiceImpl implements ReservationService {
 
         Reservation savedReservation = reservationRepository.save(reservation);
 
-        String filePath = "E:/Udemy/Project/ReservationPDF/reservation" + savedReservation.getId() + ".pdf";
+        String filePath = ITINERARY_DIR + savedReservation.getId() + ".pdf";
 
         LOGGER.info("Generating the Itinerary ");
         pdfGenerator.generateItinerary(savedReservation, filePath);
