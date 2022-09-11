@@ -1,6 +1,5 @@
 package com.vicenzo.flightreservation.services;
 
-import com.vicenzo.flightreservation.controllers.ReservationController;
 import com.vicenzo.flightreservation.dto.ReservationRequest;
 import com.vicenzo.flightreservation.entities.Flight;
 import com.vicenzo.flightreservation.entities.Passenger;
@@ -17,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
@@ -41,6 +41,7 @@ public class ReservationServiceImpl implements ReservationService {
     private EmailUtil emailUtil;
 
     @Override
+    @Transactional
     public Reservation bookFlight(ReservationRequest request) {
 
         LOGGER.info("Inside bookFlight() ");

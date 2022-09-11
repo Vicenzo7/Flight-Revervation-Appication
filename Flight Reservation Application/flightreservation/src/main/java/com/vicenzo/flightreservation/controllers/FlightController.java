@@ -38,4 +38,12 @@ public class FlightController {
     }
 
 
+
+    @RequestMapping("admin/showAddFlight")
+    public String showAddFlight(){
+        LOGGER.info("Inside  showAddFlight()");
+        return "addFlight";
+    }
+
+
 }

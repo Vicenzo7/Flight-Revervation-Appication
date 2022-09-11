@@ -6,7 +6,6 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.vicenzo.flightreservation.controllers.ReservationController;
 import com.vicenzo.flightreservation.entities.Reservation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -2,8 +2,6 @@ package com.vicenzo.flightcheckin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 public class FlightcheckinApplication {
@@ -11,10 +9,6 @@ public class FlightcheckinApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FlightcheckinApplication.class, args);
 	}
-	
-	@Bean
-	public RestTemplate getRestTemplate(){
-		return new RestTemplate();
-	}
+
 
 }
